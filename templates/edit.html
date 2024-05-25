@@ -127,6 +127,17 @@
       let articletext = await articletextresp.json();
       let edits = [];
       articletext = articletext["text"]["content"];
+
+      // display disambiguous text
+      let wordsInBrackets = [];
+
+        const regex = /\[\[([^\]]+)\]\]/g;
+        // articletext = articletext.replace(regex, '[[apple]]');
+        let match;
+        while ((match = regex.exec(articletext)) !== null) {
+            wordsInBrackets.push(match[1]);
+        }
+        console.log(wordsInBrackets);
       
       console.log(articletext.length)
       for (var i = 0; i < jsondata.length; i++) {
