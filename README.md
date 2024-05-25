@@ -22,10 +22,24 @@ mac :<br>
 Linux  :
 - `source venv/bin/activate` <br>
 
+clone this repository : `git clone https://github.com/sohomdatta1/dabfix.git`
+go to the directory : `cd dabfix`
+
+Create a virtual environment : `python -m venv venv` or `python3 -m venv venv`
+Activate the venv : 
+Windows :
+- `venv\Scripts\activate`
+mac :
+- `source venv/bin/activate`
+Linux  :
+- `source venv/bin/activate`
+
+
 Install the required dependencies :
 - `pip install -r requirements.txt`
 
 ## Running the application
+
 `flask run` <br>
 The application will be available at port : `http://127.0.0.1:5000/`
 
