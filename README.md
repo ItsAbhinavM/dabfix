@@ -42,13 +42,13 @@ ___
 Type the command : `flask run` <br>
 The application will be available at port : `http://127.0.0.1:5000/`
 
-**Database Connection** :
+## **Database Connection** :
 
 To connect to the database, use the following SSH command to create an SSH tunnel:
 
 `ssh -N -v gopavasanth@dev.toolforge.org -L localhost:3306:simplewiki.analytics.db.svc.eqiad.wmflabs:3306`
 
-**APIs** :
+## **APIs** :
 - Retrieve disambiguation data:
 `http://localhost:5000/api/getdabs/simple/Reading`
 - Retrieve raw data :
