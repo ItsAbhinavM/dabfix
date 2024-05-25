@@ -56,8 +56,8 @@
         highlighted in red.
         <h3>Wikitext of {{ page }}:</h3>
         <pre class="allwikitext"></pre>
-        <button class="cdx-button skip-this-link">Skip this link</button>
-        <button class="cdx-button">Go back to last link</button>
+        <button class="cdx-button skip-this-link" id="skipButton">Skip this link</button>
+        <button class="cdx-button" onclick="goBackToLastLink()">Go back to last link</button>
         <h3>Disambiguation page</h3>
         <div class="alldisambig"></div>
       </div>
@@ -94,16 +94,41 @@
     </div>
   </footer>
   <script>
+    function goBackToLastLink(){
+      console.log('go back to last link')
+    }
     window.addEventListener("load", async () => {
+
+      // skip button functionality
+      skipButton=document.getElementById('skipButton')
+      skipButton.addEventListener(
+        "click", () => {
+          index = parseInt(location.hash.slice(0));
+      console.log('button clicked');
+      location.hash = `#${index + 1}`;
+      showEditor();
+        }
+      )
+    //   function skipThisLink  () {
+    //   const index = parseInt(location.hash.slice(0));
+    //   console.log('button clicked');
+    //   location.hash = `#${index + 1}`;
+    //   showEditor();
+    // }
+
+      console.log("the starting of debugging")
       const queryparams = new URL(location.href).searchParams;
       const proj = queryparams.get("proj");
       const article = queryparams.get("pagename");
       const resp = await fetch(`/api/getdabs/${proj}/${article}`);
       const jsondata = await resp.json();
       const articletextresp = await fetch(`/api/getraw/${proj}/${article}`);
+      // this is the actual content
       let articletext = await articletextresp.json();
       let edits = [];
       articletext = articletext["text"]["content"];
+      
+      console.log(articletext.length)
       for (var i = 0; i < jsondata.length; i++) {
         let disambigRegex =
           "\\[\\[(" + jsondata[i].replaceAll("_", "[ _]") + "[^\\]]*)\\]\\]";
@@ -116,7 +141,8 @@
       document.querySelector(".allwikitext").innerHTML = articletext;
       location.hash = "#0";
       async function showEditor() {
-        const index = parseInt(location.hash.slice(1));
+        const index = parseInt(location.hash.slice(0)); // this was actually 1
+        // the if loop
         if (index >= jsondata.length) {
           document.querySelector(".screen-edits").style.display = "none";
           if (edits.length === 0) {
@@ -169,15 +195,24 @@
           }
         } else {
           const elem = document.getElementById(`${index}`);
-          if (!elem) {
-            location.hash = `#${index + 1}`;
-          }
-          const elemPos = document.getElementById(`${index}`).scrollIntoView({
-            behavior: "smooth",
-            block: "center",
-            inline: "center",
-          });
-          document.getElementById(`${index}`).classList.add("disambig-in-red");
+          if (elem) {
+      elem.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "center",
+      });
+      
+      elem.classList.add("disambig-in-red");
+      
+      if (index > 0) {
+        const prevElem = document.getElementById(`${index - 1}`);
+        if (prevElem) {
+          prevElem.classList.remove("disambig-in-red");
+        }
+      }
+    } else {
+      location.hash = `#${index + 1}`;
+    }
           if (index > 0 && document.getElementById(`${index - 1}`)) {
             document
               .getElementById(`${index - 1}`)
