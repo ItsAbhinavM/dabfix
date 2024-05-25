@@ -44,7 +44,7 @@ The application will be available at port : `http://127.0.0.1:5000/`
 
 ## **Database Connection** :
 
-To connect to the database, use the following SSH command to create an SSH tunnel:
+To connect to the database, use the following SSH command to create an SSH tunnel: <br>
 
 `ssh -N -v gopavasanth@dev.toolforge.org -L localhost:3306:simplewiki.analytics.db.svc.eqiad.wmflabs:3306`
 
