@@ -53,3 +53,7 @@ Contributors are welcome , please follow the following steps :
 5. Commit your changes : `git commit -m "commit message"
 6. Push the code to the repository `git push`
 7. Open a pull request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
