@@ -10,29 +10,22 @@ Before we begin, ensure that you have the following installed in your computer
 ___
 ### Installation
 
-clone this repository : `git clone https://github.com/sohomdatta1/dabfix.git` <br>
+clone this repository : `git clone https://github.com/sohomdatta1/dabfix.git` 
+
 go to the directory : `cd dabfix`
 
 Create a virtual environment : `python -m venv venv` or `python3 -m venv venv` <br>
-Activate the venv : <br>
-Windows : <br>
-- `venv\Scripts\activate`<br>
+Activate the venv : 
+
+Windows : 
+
+- `venv\Scripts\activate`
+
 mac :<br>
-- `source venv/bin/activate`<br>
+- `source venv/bin/activate`
+
 Linux  :
 - `source venv/bin/activate` <br>
-
-clone this repository : `git clone https://github.com/sohomdatta1/dabfix.git`
-go to the directory : `cd dabfix`
-
-Create a virtual environment : `python -m venv venv` or `python3 -m venv venv`
-Activate the venv : 
-Windows :
-- `venv\Scripts\activate`
-mac :
-- `source venv/bin/activate`
-Linux  :
-- `source venv/bin/activate`
 
 
 Install the required dependencies :
