@@ -98,14 +98,22 @@
       console.log('go back to last link')
     }
     window.addEventListener("load", async () => {
-
+      bool=false
       // skip button functionality
       skipButton=document.getElementById('skipButton')
       skipButton.addEventListener(
         "click", () => {
+          bool=true
           index = parseInt(location.hash.slice(0));
       console.log('button clicked');
       location.hash = `#${index + 1}`;
+
+      document.querySelector(".all-done").style.display = "block";
+            document
+              .querySelector(".try-another-one")
+              .addEventListener("click", () => {
+                location.href = "/generatedab?proj=" + proj;
+              });
       showEditor();
         }
       )
@@ -152,7 +160,10 @@
       document.querySelector(".allwikitext").innerHTML = articletext;
       location.hash = "#0";
       async function showEditor() {
-        const index = parseInt(location.hash.slice(0)); // this was actually 1
+        index = parseInt(location.hash.slice(0)); // this was actually 1
+        if (bool){
+          index+=1
+        }
         // the if loop
         if (index >= jsondata.length) {
           document.querySelector(".screen-edits").style.display = "none";
