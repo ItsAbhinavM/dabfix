@@ -96,8 +96,14 @@
   <script>
     function goBackToLastLink(){
       console.log('go back to last link')
+      bool = false; // reset the skip flag
+    const index = parseInt(location.hash.slice(1));
+    if (index > 0) {
+      location.hash = `#${index - 1}`;
+    }
     }
     window.addEventListener("load", async () => {
+      
       bool=false
       // skip button functionality
       skipButton=document.getElementById('skipButton')
@@ -113,26 +119,39 @@
                       location.href = "/generatedab?proj=" + proj;
                     });
       // document.querySelector(".all-done").style.display = "block";
-            document
-              .querySelector(".try-another-one")
-              .addEventListener("click", () => {
-                location.href = "/generatedab?proj=" + proj;
-              });
+            // document
+            //   .querySelector(".try-another-one")
+            //   .addEventListener("click", () => {
+            //     location.href = "/generatedab?proj=" + proj;
+            //   });
       showEditor();
         }
       )
-    //   function skipThisLink  () {
-    //   const index = parseInt(location.hash.slice(0));
-    //   console.log('button clicked');
-    //   location.hash = `#${index + 1}`;
-    //   showEditor();
-    // }
+      function displayErrorMessage() {
+        document.body.innerHTML = '<div class="error-message" style="text-align: center;"><h2>Oops, seems like there is an issue in the code. Try again.</h2></div>';
+      }
+
+      // go back button functionality
+    const goBackButton = document.querySelector('.cdx-button[onclick="goBackToLastLink()"]');
+    goBackButton.addEventListener("click", goBackToLastLink);
 
       console.log("the starting of debugging")
       const queryparams = new URL(location.href).searchParams;
       const proj = queryparams.get("proj");
       const article = queryparams.get("pagename");
       const resp = await fetch(`/api/getdabs/${proj}/${article}`);
+
+      // display error message
+      if (!resp.ok) {
+        if (resp.status === 500 || resp.status === 404) {
+            displayErrorMessage();
+        } else {
+            console.error(`Error fetching data: ${resp.status} ${resp.statusText}`);
+        }
+        return;
+    }
+    // const jsondata = await resp.json();
+
       const jsondata = await resp.json();
       const articletextresp = await fetch(`/api/getraw/${proj}/${article}`);
       // this is the actual content
@@ -213,6 +232,7 @@
                     ).innerHTML = `Edit successfully made, <a href="https://${proj}.wikipedia.org/wiki/Special:Diff/${editJson["edit"]["newrevid"]}">view your edit here.</a>`;
                   }
                 } catch (e) {
+                  displayErrorMessage();
                   document.querySelector(
                     ".edit-end-message"
                   ).innerHTML = `Edit could not by made :( Please try again.`;
