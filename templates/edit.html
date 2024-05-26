@@ -95,6 +95,7 @@
   </footer>
   <script>
     function goBackToLastLink(){
+      window.history.back();
       console.log('go back to last link')
       bool = false; // reset the skip flag
     const index = parseInt(location.hash.slice(1));
@@ -158,6 +159,7 @@
       let articletext = await articletextresp.json();
       let edits = [];
       articletext = articletext["text"]["content"];
+      console.log(article);
 
       // display disambiguous text
       let wordsInBrackets = [];
@@ -259,13 +261,14 @@
     } else {
       location.hash = `#${index + 1}`;
     }
+
           if (index > 0 && document.getElementById(`${index - 1}`)) {
             document
               .getElementById(`${index - 1}`)
               .classList.remove("disambig-in-red");
           }
           const parsedResp = await fetch(
-            `/api/getparsed/${proj}/${jsondata[index]}`
+            `/api/getparsed/${proj}/${jsondata[index]}` // main thing index
           );
           const parsedRespdata = await parsedResp.json();
           document.querySelector(".alldisambig").innerHTML =
