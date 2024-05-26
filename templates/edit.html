@@ -104,11 +104,15 @@
       skipButton.addEventListener(
         "click", () => {
           bool=true
-          index = parseInt(location.hash.slice(0));
-      console.log('button clicked');
-      location.hash = `#${index + 1}`;
-
-      document.querySelector(".all-done").style.display = "block";
+      //     index = parseInt(location.hash.slice(0));
+      // console.log('button clicked');
+      // location.hash = `#${index + 1}`;
+      document
+                    .querySelector(".skip-this-link")
+                    .addEventListener("click", () => {
+                      location.href = "/generatedab?proj=" + proj;
+                    });
+      // document.querySelector(".all-done").style.display = "block";
             document
               .querySelector(".try-another-one")
               .addEventListener("click", () => {
