@@ -6,53 +6,60 @@
     <title>Login - Dabfix</title>
     <style>
       body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-      }
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
 
-      .login-container {
-        height: 300px;
-        width: 400px;
-        text-align: center;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
+ .login-container {
+    height: 250px; /* Slightly larger container for better content fit */
+    width: 450px; /* Wider container for better layout */
+    text-align: center;
+    padding: 30px; /* Increased padding for spacing */
+    background-color: #fff;
+    border-radius: 15px; /* Rounded corners for a softer look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Enhanced shadow for depth */
+    animation: fadeIn 1s ease-in-out forwards; /* Fade-in animation for the container */
+  }
 
-      .tool-name {
-        font-size: 24px;
-        font-weight: bold;
-        color: #007bff;
-        margin-bottom: 10px;
-      }
+  @keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+  }
 
-      .tool-description {
-        font-size: 18px;
-        color: #333;
-        margin-bottom: 20px;
-      }
+ .tool-name {
+    font-size: 28px; /* Larger font size for prominence */
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 15px; /* Reduced margin for tighter layout */
+  }
 
-      .login-button {
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
+ .tool-description {
+    font-size: 20px; /* Slightly larger for better readability */
+    color: #666; /* Softer color for less contrast */
+    margin-bottom: 25px; /* Adjusted for balance */
+  }
 
-      .login-button:hover {
-        background-color: #0056b3;
-      }
-    </style>
+ .login-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 22px; /* Thicker padding for a more tactile feel */
+    font-size: 18px; /* Bolder font for impact */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Added transform for scale effect */
+  }
+
+ .login-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1); /* Scale up on hover for a tactile effect */
+  }
+      </style>
   </head>
   <body>
     <div class="login-container">

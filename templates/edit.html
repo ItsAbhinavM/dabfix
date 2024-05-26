@@ -12,15 +12,173 @@
       href="https://tools-static.wmflabs.org/cdnjs/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css"
     />
     <style>
-      /* Custom styles here */
-      .container {
-        margin: 0 auto;
-        padding: 20px;
+      body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        background-color: #f8f9fa;
       }
-      .btn-action {
-        margin-right: 10px;
+    
+     .navbar {
+        border-bottom: 2px solid #007bff;
+        padding: 0.5rem 1rem;
+      }
+    
+     .navbar-brand,
+     .navbar-nav.nav-link {
+        color: #fff;
+        font-weight: bold;
+      }
+    
+     .navbar-nav.nav-link:hover {
+        color: #031120; /* More accessible hover color */
+      }
+    
+     .navbar-nav.active >.nav-link,
+     .show >.navbar-nav >.nav-link {
+        color: #ffce00; /* Highlight active or open nav items */
+      }
+    
+     .dropdown-menu {
+        background-color: #343a40;
+        color: #fff;
+        border-radius: 0.25rem;
+      }
+    
+     .dropdown-item {
+        color: #fff;
+      }
+    
+     .dropdown-item:hover {
+        background-color: #27292b;
+        color: #fff;
+      }
+    
+     .container.screen-edits {
+        margin-top: 40px;
+        max-width: 960px;
+        padding: 20px;
+        background-color: #fbf8f8;
+        box-shadow: 0 2px 4px rgba(0,0,0,.3);
+      }
+    
+      h2, h3 {text-align: center;
+        color: #061525;
+
+
+        margin-top: 30px;
+        font-weight: 700;
+   
+      }
+    
+      pre.allwikitext {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+        margin-left: 3%;
+        overflow-x: auto;
+        white-space: pre-wrap; /* Preserves formatting and improves readability */
+        text-wrap: wrap;
+      }
+    
+      #skipButton {
+        background-color: rgba(1, 10, 11, 0.74);
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        margin: 5px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s, transform 0.2s;
+      }
+    
+      #skipButton:hover {
+        background-color: #1483f1;
+        color: rgb(231, 221, 221);
+        transform: scale(1.1);
+      }
+    
+     .screen-finish,
+     .all-done {
+        padding: 20px;
+        background-color: #e9ecef;
+        border-radius: 5px;
+        margin-top: 20px;
+      }
+    
+      footer {
+        background-color: #343a40;
+        color: #fff;
+        margin-top: 30px;
+        padding: 20px;
+        text-align: center;
+      }footer:hover {
+    background-color: #1a1c1e; 
+    transform: 0.4s;
+    color: whitesmoke;
+    /* Change background color on hover */
+  }
+    
+      footer p a {
+        color: #fff;
+      }
+    
+      @media (max-width: 768px) {
+       
+       .navbar-nav.nav-link {
+          width: 100%;
+        }
+    
+       .navbar-toggler {
+          border-color: #fff; /* Toggler button color */
+        }
+    
+       .navbar-toggler-icon {
+          filter: invert(1); /* Invert icon color for better visibility */
+        }
+      }
+    
+      /* New CSS for enhanced hover effects and animations */
+     .navbar-nav.nav-link:hover {
+        animation: pulse 1s infinite; /* Adds a pulsing effect on hover */
+      }
+    
+      @keyframes pulse {
+        0%, 100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+    
+     .dropdown-item:hover {
+        animation: float 1s infinite; /* Adds a floating effect on hover */
+      }
+    
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-5px);
+        }
+      }
+    
+     .screen-finish:hover,
+     .all-done:hover {
+        animation: scaleUp 0.5s; /* Scales up on hover */
+      }
+    
+      @keyframes scaleUp {
+        0% {
+          transform: scale(1);
+        }
+        100% {
+          transform: scale(1.05);
+        }
       }
     </style>
+    
+    
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -48,18 +206,24 @@
     <script src="https://tools-static.wmflabs.org/cdnjs/ajax/libs/bootstrap/4.6.2/js/bootstrap.min.js"></script>
     <div class="container screen-edits">
       <h2>Editing {{ page }} on {{ proj }}.wikipedia.org</h2>
-      <div id="scene" style="min-width: 1200px; justify-content: center">
+      <div id="scene" >
         This page has two areas, one displays the text of the article, the other
         displays the disambiguation page source.
         <br />
         Click on a blue link on the disambiguation page to edit the link
         highlighted in red.
         <h3>Wikitext of {{ page }}:</h3>
-        <pre class="allwikitext"></pre>
+        <pre class="allwikitext">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque tenetur placeat dolor quisquam? Earum exercitationem distinctio consectetur ratione perspiciatis, dignissimos voluptas doloribus, quis provident culpa dicta impedit? Sit, sed eos.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ratione quia illo eaque, nobis possimus debitis expedita? Tempore porro at quidem, provident quaerat, distinctio ipsam aliquam culpa illum cumque maxime.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat cupiditate quos officiis exercitationem laboriosam? Iusto vitae quos, hic praesentium amet quidem earum velit distinctio! Perspiciatis eius tempore dicta voluptates dolore!
+        </pre>
         <button class="cdx-button skip-this-link" id="skipButton">Skip this link</button>
-        <button class="cdx-button" onclick="goBackToLastLink()">Go back to last link</button>
+        <button class="cdx-button" onclick="goBackToLastLink()" id="skipButton">Go back to last link</button>
         <h3>Disambiguation page</h3>
-        <div class="alldisambig"></div>
+        <div class="alldisambig">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae, eum deleniti sunt consequatur architecto aspernatur sit nihil id error veniam maiores, officiis sequi ex, numquam reprehenderit vitae excepturi hic magnam.
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat autem a laboriosam asperiores molestias doloribus dolore magnam, quasi cumque magni illo nisi nesciunt provident expedita quas voluptate odio consectetur nemo.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus odio eius facilis vitae? Numquam illum odio temporibus impedit cupiditate veniam illo ullam nam ut amet aperiam consectetur repellat, corrupti perspiciatis!
+        </div>
       </div>
     </div>
     <div class="screen-finish" style="display: none">
