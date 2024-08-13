@@ -95,7 +95,6 @@ The application uses environment variables to manage configuration settings. Ens
 
 ### API Endpoints
 
-<<<<<<< HEAD
 Contributors are welcome ! Please follow the following instructions
 
 - Fork the repository
@@ -114,9 +113,8 @@ Contributors are welcome , please follow the following steps :
 5. Commit your changes : `git commit -m "commit message"`
 6. Push the code to the repository `git push`
 7. Open a pull request
-=======
+
 The application provides several API endpoints for programmatic access:
->>>>>>> c20e847 (bugfix: skip button)
 
 - **Get Disambiguation Links**: 
   - `GET /api/getdabs/<proj>/<path:pagename>`
